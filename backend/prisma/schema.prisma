@@ -103,6 +103,7 @@ model User {
   crops     Crop[]
   resetTokens PasswordResetToken[]
   simulatorPlants Plant[]
+  sectors   Sector[] @relation("SectorClient")
 }
 
 model PasswordResetToken {
@@ -127,6 +128,8 @@ model Sector {
   thresholds  Threshold[]
   anomalies   ConsumptionAnomaly[]
   plants      Plant[]
+  userId      Int?
+  user        User?         @relation("SectorClient", fields: [userId], references: [id])
 }
 
 model Crop {

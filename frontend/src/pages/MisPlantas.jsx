@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
   Sun,
@@ -338,8 +338,14 @@ export default function MisPlantas() {
                           {planta.name}
                         </h2>
 
-                        <p className="mt-1 text-xs font-medium uppercase tracking-wider text-emerald-700/70">
-                          {planta.species || 'Especie general'}
+                        <p className="mt-1 flex flex-col text-xs font-medium uppercase tracking-wider text-emerald-700/70">
+                          <span>{planta.species || 'Especie general'}</span>
+                          {planta.sector?.name && (
+                            <span className="mt-1 flex items-center gap-1 font-bold text-[#092f25]">
+                              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                              Zona: {planta.sector.name}
+                            </span>
+                          )}
                         </p>
 
                       </div>
